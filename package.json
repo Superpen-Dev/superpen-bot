@@ -2,7 +2,7 @@
   "name": "superpen-chatbot",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://superpen-dev.github.io/superpen-bot",
+  "homepage": "https://superpen-dev.github.io/superpen-chatbot",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
