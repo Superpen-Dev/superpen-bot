@@ -1,14 +1,15 @@
 import React from "react";
-import "./ChatMessage.css"; // Import the CSS file
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./GlobalStyle.css";
 
 const ChatMessage = ({ message }) => {
   return (
-    <div className={`chat-message-container ${message.isUser ? "user" : "bot"}`}>
-      <div className={`chat-message ${message.isUser ? "user" : "bot"}`}>
-        <p>{message.text}</p>
-        <span className="message-time">{new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
-        <div className="bubble-tail"></div>
+    <div className={`d-flex ${message.isUser ? "justify-content-end" : "justify-content-start"} mb-3`}>
+      <div className={`card ${message.isUser ? "bg-primary text-white" : "bg-light"} p-2`}>
+        <p className="mb-1">{message.text}</p>
+        <small className="text-muted">
+          {new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+        </small>
       </div>
     </div>
   );

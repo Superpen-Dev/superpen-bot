@@ -1,40 +1,46 @@
 import React, { useEffect, useState } from "react";
 import ChatWindow from "../components/ChatWindow";
-import "./ChatPage.css"; // Scoped styles only for ChatPage
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./ChatPage.css";
 
 const ChatPage = () => {
   const [showWelcome, setShowWelcome] = useState(true);
   const [chatStarted, setChatStarted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setShowWelcome(false), 3000); // Hide welcome message after 3 sec
+    setTimeout(() => {
+      setShowWelcome(false);
+      setLoading(false);
+    }, 2000);
   }, []);
 
   return (
-    <div className="chatpage-wrapper">
-      <div className="chatpage-container">
-        {showWelcome ? (
-          <div className="welcome">
-            <h1 className="fade-in">🚀 Welcome to Superpen AI!</h1>
-            <p className="fade-in-delayed">Your AI assistant is here to help.</p>
+    <div className="chatpage-wrapper d-flex align-items-center justify-content-center vh-100">
+      <div className="chatbox">
+        {loading ? (
+          <div className="spinner-container text-center">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+            <p className="mt-2 text-muted">Loading Superpen AI...</p>
+          </div>
+        ) : showWelcome ? (
+          <div className="welcome text-center">
+            <h1 className="fade-in text-primary">🚀 Welcome to Superpen AI!</h1>
+            <p className="fade-in-delayed text-muted">How can I assist you today?</p>
           </div>
         ) : (
           <>
             {!chatStarted && (
-              <div className="cta-container">
-                <button className="cta-button" onClick={() => setChatStarted(true)}>
-                  🤖 Have a Question? Ask Superpen AI!
+              <div className="text-center">
+                <button className="btn btn-primary btn-lg start-chat-btn" onClick={() => setChatStarted(true)}>
+                  Start Chat 💬
                 </button>
               </div>
             )}
             {chatStarted && <ChatWindow />}
           </>
-        )}
-
-        {!chatStarted && (
-          <button className="floating-chat-btn" onClick={() => setChatStarted(true)}>
-            💡 Chat Now
-          </button>
         )}
       </div>
     </div>

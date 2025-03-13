@@ -1,12 +1,14 @@
 import React from "react";
-import "./Loader.css"; // Import the CSS file for styles
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./GlobalStyle.css";
 
 const Loader = () => {
   return (
-    <div className="loader-container">
-      <div className="loader-spinner"></div>
-      <p className="loader-text">Generating an epic response... 🚀</p>
+    <div className="text-center p-3">
+      <div className="spinner-border text-primary" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </div>
+      <p className="mt-2">Generating an epic response... 🚀</p>
     </div>
   );
 };
